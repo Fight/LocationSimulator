@@ -12,7 +12,21 @@ import CoreLocation
 
 let kAnnotationViewCurrentLocationIdentifier = "AnnotationViewCurrentLocationIdentifier"
 
-let kDarkBlurColor = NSColor(calibratedWhite: 0.4, alpha: 0.5)
+let kDarkBlurColor: NSColor = {
+    if #available(OSX 10.14, *) {
+        return NSColor(calibratedWhite: 0.1, alpha: 0.2)
+    } else {
+        return NSColor(calibratedWhite: 0.4, alpha: 0.5)
+    }
+}()
+
+let kLightBlurColor: NSColor = {
+    if #available(OSX 10.14, *) {
+        return NSColor(calibratedWhite: 1.0, alpha: 0.6)
+    } else {
+        return NSColor(calibratedWhite: 1.0, alpha: 1.0)
+    }
+}()
 
 public extension NSNotification.Name {
     static let AutoFoucusCurrentLocationChanged = Notification.Name("AutoFoucusCurrentLocationChanged")
@@ -41,6 +55,8 @@ class MapViewController: NSViewController {
     @IBOutlet weak var separatorLine: NSBox!
     /// The label which displays the total amount of meters you walked.
     @IBOutlet weak var totalDistanceLabel: NSTextField!
+    /// Top offset of the spinner container.
+    @IBOutlet weak var spinnerContainerTopConstraint: NSLayoutConstraint!
 
     // MARK: - Properties
 
@@ -113,10 +129,7 @@ class MapViewController: NSViewController {
         self.moveHeadingCircleView.shadow = shadow
 
         // configure the blur view for dark mode
-        self.moveHeadingEffectView.tintColor = kDarkBlurColor
         self.moveHeadingEffectView.maskImage = #imageLiteral(resourceName: "CircleOutline")
-
-        self.moveButtonEffectView.tintColor = kDarkBlurColor
         self.moveButtonEffectView.maskImage = #imageLiteral(resourceName: "MoveButton")
 
         // customize spinner
@@ -157,6 +170,7 @@ class MapViewController: NSViewController {
         self.updateAppearance()
 
         // Fixme: This is ugly, but I can not get another solution to work...
+        // This is broken on macOS 11.0. See the ContentView for a workaround.
         NotificationCenter.default.addObserver(self, selector: #selector(themeChanged),
                                                name: .AppleInterfaceThemeChanged, object: nil)
     }
@@ -168,14 +182,23 @@ class MapViewController: NSViewController {
         super.mouseDown(with: event)
     }
 
+    override func viewWillAppear() {
+        // move the spinner container down if the mapview is behind the statusbar
+        if #available(OSX 11.0, *) {
+            spinnerContainerTopConstraint.constant = self.view.safeAreaInsets.top + 20
+        }
+        super.viewWillAppear()
+    }
+
     override func viewDidAppear() {
         guard let window = self.view.window else { return }
         window.makeFirstResponder(self.mapView)
+        super.viewDidAppear()
     }
 
-    deinit {
+    /*deinit {
         NotificationCenter.default.removeObserver(self)
-    }
+    }*/
 
     // MARK: - Dark mode
 
@@ -183,14 +206,31 @@ class MapViewController: NSViewController {
     func updateAppearance() {
         var isDarkMode = false
         if #available(OSX 10.14, *) {
+            // If we drop 10.13 support use NSApp.effectiveAppearance.name == .darkAqua instead.
+            // The best idead would be to change the whole dark mode handling.
             isDarkMode = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
         }
-        self.spinnerContainer.tintColor = isDarkMode ? kDarkBlurColor : .white
-        self.spinnerContainer.disableBlur = !isDarkMode
-        self.moveButtonEffectView.disableBlur = !isDarkMode
-        self.moveHeadingEffectView.disableBlur = !isDarkMode
+
+        let blurColor = isDarkMode ? kDarkBlurColor : kLightBlurColor
+        var disableBlur = !isDarkMode
+        if #available(OSX 11.0, *) {
+            disableBlur = false
+        }
+
+        self.spinnerContainer.tintColor = blurColor
+        self.moveHeadingEffectView.tintColor = blurColor
+        self.moveButtonEffectView.tintColor = blurColor
+
+        self.spinnerContainer.disableBlur = disableBlur
+        self.moveHeadingEffectView.disableBlur = disableBlur
+        self.moveButtonEffectView.disableBlur = disableBlur
+
         self.separatorLine.borderColor = isDarkMode ? .black : NSColor(calibratedRed: 167.0/255.0, green: 167.0/255.0,
                                                                        blue: 167.0/255.0, alpha: 1.0)
+        //if #available(OSX 11.0, *) {
+            //let contentViewLayer = self.view.window?.contentView?.layer
+            //contentViewLayer?.backgroundColor = (isDarkMode ? kDarkBlurColor : .white).cgColor
+        //}
     }
 
     /// Callback when the theme changed from light to dark or dark to light.
@@ -203,7 +243,7 @@ class MapViewController: NSViewController {
     /// Load a new device given by its udid. A new spoofer instance is created based on the device. All location change
     /// or reset actions are directed to this spoofer instance. If you change the device you have to call this method to
     /// change the current spoofer instance to interact with it. You can not interact with more than one device at a
-    ///  time.
+    /// time.
     /// - Parameter udid: device unique identifier
     /// - Return: true on success, false otherwise
     func loadDevice(_ udid: String) -> Bool {

@@ -1,23 +1,13 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "Circle.pdf"
-    },
-    {
-      "idiom" : "universal",
       "filename" : "CircleTransparent.pdf",
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ]
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   },
   "properties" : {
     "preserves-vector-representation" : true

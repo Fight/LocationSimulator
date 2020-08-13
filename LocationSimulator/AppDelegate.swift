@@ -22,7 +22,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if items.count > 0 {
             RecentLocationMenubarItem.clearMenu.enable()
         }
-
     }
 
     //func applicationWillTerminate(_ aNotification: Notification) {}

@@ -21,6 +21,7 @@
 		63156C1422FB9A5D0086D5F6 /* COPYRIGHT in Resources */ = {isa = PBXBuildFile; fileRef = 63156C1322FB9A5D0086D5F6 /* COPYRIGHT */; };
 		63156C1722FB9BC20086D5F6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 63156C1622FB9BC20086D5F6 /* LICENSE */; };
 		63183E29231821DC0073D80E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 63183E27231821DB0073D80E /* Localizable.strings */; };
+		631A64DC24E6037B006BBE50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631A64DB24E6037B006BBE50 /* ContentView.swift */; };
 		631F9D222309F89300A7A8CF /* NSWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */; };
 		631F9D24230A063200A7A8CF /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631F9D23230A063200A7A8CF /* NSImage+Extension.swift */; };
 		632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 632C465823F4B611004E5092 /* CoordinateSelectionView.swift */; };
@@ -84,6 +85,7 @@
 		63183E26231821B80073D80E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		63183E28231821DB0073D80E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		63183E2A2318221B0073D80E /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		631A64DB24E6037B006BBE50 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		631F9D212309F89300A7A8CF /* NSWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSWindow+Extension.swift"; sourceTree = "<group>"; };
 		631F9D23230A063200A7A8CF /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		632C465823F4B611004E5092 /* CoordinateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateSelectionView.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 		63FC47A22306243300BBB2E8 /* windowcontroller */ = {
 			isa = PBXGroup;
 			children = (
+				631A64DB24E6037B006BBE50 /* ContentView.swift */,
 				632C465123F4B326004E5092 /* progresspanel */,
 				63F01A5A22F98DFE00EF2F16 /* LocationSearchField.swift */,
 				130F510920AE9634002A61F1 /* WindowController.swift */,
@@ -359,7 +362,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "David Klopp";
 				TargetAttributes = {
 					13BA351520A433EE00A0431C = {
@@ -471,6 +474,7 @@
 				63B443CA230DF9FC00CDBA08 /* ProgressViewController.swift in Sources */,
 				63156C0422FB67610086D5F6 /* devicepair.c in Sources */,
 				6361BA3523022C3A002986BF /* MKMultiPoint+Extension.swift in Sources */,
+				631A64DC24E6037B006BBE50 /* ContentView.swift in Sources */,
 				6311B799230C150D00AABF3E /* Filemanager+Extension.swift in Sources */,
 				633A460322F996E1005B3BE0 /* NSView+Extension.swift in Sources */,
 				632C465923F4B611004E5092 /* CoordinateSelectionView.swift in Sources */,
@@ -554,6 +558,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -617,6 +622,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -649,6 +655,7 @@
 		13BA352720A433EF00A0431C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
@@ -685,6 +692,7 @@
 		13BA352820A433EF00A0431C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;
@@ -744,6 +752,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -776,6 +785,7 @@
 		63A4F929240366EA00C3D877 /* Homebrew */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = LocationSimulator/LocationSimulator.entitlements;

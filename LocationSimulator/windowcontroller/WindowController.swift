@@ -79,9 +79,9 @@ class WindowController: NSWindowController {
         Device.stopGeneratingDeviceNotifications()
 
         // remove all notifications
-        NotificationCenter.default.removeObserver(self, name: .DeviceConnected, object: nil)
+        /*NotificationCenter.default.removeObserver(self, name: .DeviceConnected, object: nil)
         NotificationCenter.default.removeObserver(self, name: .DevicePaired, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .DeviceDisconnected, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .DeviceDisconnected, object: nil)*/
         if let observer = self.autofocusObserver {
             NotificationCenter.default.removeObserver(observer)
             self.autofocusObserver = nil
