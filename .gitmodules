@@ -1,6 +1,4 @@
-[submodule "tools"]
-	path = tools
-	url = https://github.com/Schlaubischlump/xcodedevtools
+
 [submodule "tools"]
 	path = tools
 	url = git@github.com:Schlaubischlump/xcodedevtools.git
