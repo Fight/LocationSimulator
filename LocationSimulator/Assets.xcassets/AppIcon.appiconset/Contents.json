@@ -31,25 +31,25 @@
       "size" : "128x128"
     },
     {
-      "filename" : "Icon_Big_Sur-3.png",
+      "filename" : "AppIcon_256.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"
     },
     {
-      "filename" : "Icon_Big_Sur-2.png",
+      "filename" : "AppIcon_256@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "256x256"
     },
     {
-      "filename" : "Icon_Big_Sur-1.png",
+      "filename" : "AppIcon.png",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "512x512"
     },
     {
-      "filename" : "Icon_Big_Sur.png",
+      "filename" : "AppIcon@2x.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"
