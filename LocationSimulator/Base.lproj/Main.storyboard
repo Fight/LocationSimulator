@@ -807,12 +807,12 @@
                                 <toolbarItem implicitItemIdentifier="05896384-9377-47D8-8616-24434D2F77DB" label="" paletteLabel="Move Types" sizingBehavior="auto" id="d4p-ja-QrK">
                                     <nil key="toolTip"/>
                                     <segmentedControl key="view" verticalHuggingPriority="750" id="JrU-V8-kbc">
-                                        <rect key="frame" x="0.0" y="14" width="181" height="24"/>
+                                        <rect key="frame" x="0.0" y="14" width="127" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="Mrg-VI-6Bg">
                                             <font key="font" metaFont="system"/>
                                             <segments>
-                                                <segment label="Walk" imageScaling="proportionallyUpOrDown" width="58" selected="YES"/>
+                                                <segment label="Walk" imageScaling="proportionallyUpOrDown" width="33" selected="YES"/>
                                                 <segment label="Cycle" imageScaling="proportionallyUpOrDown" tag="1"/>
                                                 <segment label="Drive" imageScaling="proportionallyUpOrDown"/>
                                             </segments>
@@ -852,7 +852,7 @@
                                 <toolbarItem implicitItemIdentifier="6F13F7B5-5480-40F6-9CCF-DACF5B3377BB" label="Devices" paletteLabel="Devices" sizingBehavior="auto" id="Of5-OJ-NeV">
                                     <nil key="toolTip"/>
                                     <popUpButton key="view" verticalHuggingPriority="750" id="s7G-Hf-qPV">
-                                        <rect key="frame" x="0.0" y="14" width="58" height="24"/>
+                                        <rect key="frame" x="11" y="14" width="27" height="23"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a2u-Ak-h7p">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
